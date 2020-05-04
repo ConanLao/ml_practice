@@ -1,0 +1,5 @@
+1. data_preprocessing.feature_normalize should return the computed mean and std vetors as well, because they are used to
+ "normalize"(transform) dev set and test set later.
+
+2. numpy.mean and numpy.std will calculate the mean and std of the flattened input array but not use axis = 0 as
+default.
