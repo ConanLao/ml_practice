@@ -16,8 +16,7 @@ def normalEqn(X, y):
     :return: theta : array_like
         Estimated linear regression parameters. A vector of shape (n+1, ).
     """
-    return np.dot(np.dot(np.linalg.inv(np.dot(X.T, X)), X.T), y)
-    # return np.linalg.inv(X.T @ X) @ X.T @ y
+    return np.linalg.inv(X.T @ X) @ X.T @ y
 
 # >2 features in the input data
 data = np.loadtxt('Data/ex1data2.txt', delimiter=',')
