@@ -1,0 +1,11 @@
+1. 1D numpy array is a vector but not a matrix with column/row size = 1. vector.T returns the vector itself instead of
+its "transpose".
+
+2. matrix times vector:
+    A @ B
+    if A is a vector, then numpy treats a as a row vector (matrix with one row)
+    if B is a vector, then numpy treats a as a column vector (matrix with one column)
+
+3. vector.dot(vector) is the same as vector * vector.
+
+4. As long as there is a division operation, the type will become float. Example: type(1 / 1) -> <class 'float'>
