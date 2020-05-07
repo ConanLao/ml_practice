@@ -33,48 +33,69 @@ def compute_cost_and_grad_test():
 
 
 def compute_cost_and_grad_with_reg_test():
-    # Tests for compute_cost_and_grad_with_reg
-    data = np.loadtxt('Data/ex2data2.txt', delimiter=',')
-    X, y = data[:, :2], data[:, 2]
-    m, n = X.shape
+    # # Tests for compute_cost_and_grad_with_reg
+    # data = np.loadtxt('Data/ex2data2.txt', delimiter=',')
+    # X, y = data[:, :2], data[:, 2]
+    # m, n = X.shape
+    #
+    # X = lr.map_feature(X[:, 0], X[:, 1], 6)
+    #
+    # # Initialize fitting parameters
+    # initial_theta = np.zeros(X.shape[1])
+    #
+    # # Set regularization parameter lambda to 1
+    # # DO NOT use `lambda` as a variable name in python
+    # # because it is a python keyword
+    # lambda_ = 1
+    #
+    # # Compute and display initial cost and gradient for regularized logistic
+    # # regression
+    # cost, grad = lr.compute_cost_and_grad_with_reg(initial_theta, X, y, lambda_)
+    #
+    # print('Cost at initial theta (zeros): {:.3f}'.format(cost))
+    # print('Expected cost (approx)       : 0.693\n')
+    #
+    # print('Gradient at initial theta (zeros) - first five values only:')
+    # print('\t[{:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}]'.format(*grad[:5]))
+    # print('Expected gradients (approx) - first five values only:')
+    # print('\t[0.0085, 0.0001, 0.0377, 0.0235, 0.0393]\n')
+    #
+    #
+    # # Compute and display cost and gradient
+    # # with all-ones theta and lambda = 10
+    # test_theta = np.ones(X.shape[1])
+    # cost, grad = lr.compute_cost_and_grad_with_reg(test_theta, X, y, 10)
+    #
+    # print('------------------------------\n')
+    # print('Cost at test theta    : {:.2f}'.format(cost))
+    # print('Expected cost (approx): 3.16\n')
+    #
+    # print('Gradient at initial theta (zeros) - first five values only:')
+    # print('\t[{:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}]'.format(*grad[:5]))
+    # print('Expected gradients (approx) - first five values only:')
+    # print('\t[2.6342, 2.3982, 2.4478, 2.3869, 2.4033]')
+    # test values for the parameters theta
+    theta_t = np.array([-2, -1, 1, 2], dtype=float)
 
-    X = lr.map_feature(X[:, 0], X[:, 1], 6)
+    # test values for the inputs
+    X_t = np.concatenate([np.ones((5, 1)), np.arange(1, 16).reshape(5, 3, order='F') / 10.0], axis=1)
 
-    # Initialize fitting parameters
-    initial_theta = np.zeros(X.shape[1])
+    # test values for the labels
+    y_t = np.array([1, 0, 1, 0, 1])
 
-    # Set regularization parameter lambda to 1
-    # DO NOT use `lambda` as a variable name in python
-    # because it is a python keyword
-    lambda_ = 1
+    # test value for the regularization parameter
+    lambda_t = 3
 
-    # Compute and display initial cost and gradient for regularized logistic
-    # regression
-    cost, grad = lr.compute_cost_and_grad_with_reg(initial_theta, X, y, lambda_)
+    J, grad = lr.compute_cost_and_grad_with_reg(theta_t, X_t, y_t, lambda_t)
 
-    print('Cost at initial theta (zeros): {:.3f}'.format(cost))
-    print('Expected cost (approx)       : 0.693\n')
-
-    print('Gradient at initial theta (zeros) - first five values only:')
-    print('\t[{:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}]'.format(*grad[:5]))
-    print('Expected gradients (approx) - first five values only:')
-    print('\t[0.0085, 0.0001, 0.0377, 0.0235, 0.0393]\n')
+    print('Cost         : {:.6f}'.format(J))
+    print('Expected cost: 2.534819')
+    print('-----------------------')
+    print('Gradients:')
+    print(' [{:.6f}, {:.6f}, {:.6f}, {:.6f}]'.format(*grad))
+    print('Expected gradients:')
+    print(' [0.146561, -0.548558, 0.724722, 1.398003]');
 
 
-    # Compute and display cost and gradient
-    # with all-ones theta and lambda = 10
-    test_theta = np.ones(X.shape[1])
-    cost, grad = lr.compute_cost_and_grad_with_reg(test_theta, X, y, 10)
-
-    print('------------------------------\n')
-    print('Cost at test theta    : {:.2f}'.format(cost))
-    print('Expected cost (approx): 3.16\n')
-
-    print('Gradient at initial theta (zeros) - first five values only:')
-    print('\t[{:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}]'.format(*grad[:5]))
-    print('Expected gradients (approx) - first five values only:')
-    print('\t[2.6342, 2.3982, 2.4478, 2.3869, 2.4033]')
-
-
-compute_cost_and_grad_test()
+# compute_cost_and_grad_test()
 compute_cost_and_grad_with_reg_test()

@@ -28,12 +28,6 @@ print("X.shape = ", X.shape)
 # set options for optimize.minimize
 options = {'maxiter': 400}
 
-# see documention for scipy's optimize.minimize  for description about
-# the different parameters
-# The function returns an object `OptimizeResult`
-# We use truncated Newton algorithm for optimization which is
-# equivalent to MATLAB's fminunc
-# See https://stackoverflow.com/questions/18801002/fminunc-alternate-in-numpy
 res = optimize.minimize(lr.compute_cost_and_grad,
                         theta,
                         (X, y),

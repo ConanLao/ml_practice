@@ -72,8 +72,39 @@ def map_feature(X1, X2, degree = 6):
 
 
 def compute_cost_and_grad_with_reg(theta, X, y, lambda_):
+    """
+        Computes the cost of using theta as the parameter for regularized
+    logistic regression and the gradient of the cost w.r.t. to the parameters.
+
+    Parameters
+    ----------
+    theta : array_like
+        Logistic regression parameters. A vector with shape (n, ). n is
+        the number of features including any intercept.
+
+    X : array_like
+        The data set with shape (m x n). m is the number of examples, and
+        n is the number of features (including intercept).
+
+    y : array_like
+        The data labels. A vector with shape (m, ).
+
+    lambda_ : float
+        The regularization parameter.
+
+    Returns
+    -------
+    J : float
+        The computed value for the regularized cost function.
+
+    grad : array_like
+        A vector of shape (n, ) which is the gradient of the cost
+        function with respect to theta, at the current values of theta.
+    """
     m = X.shape[0]
     y_hat = sigmoid(X @ theta.T)
     J = - (1 / m) * np.sum(y * np.log(y_hat) + (1 - y) * np.log(1 - y_hat)) + np.sum(lambda_ / (2 * m) * theta[1:] ** 2)
-    grad = (1 / m) * X.T @ (y_hat - y) + lambda_ / m * np.sum(theta[1:])
+    temp = theta
+    temp[0] = 0
+    grad = (1 / m) * X.T @ (y_hat - y) + lambda_ / m * temp
     return J, grad
