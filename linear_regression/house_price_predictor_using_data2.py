@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import gradient_descent as gd
 import data_preprocessing as dp
+from linear_regression import gradient_descent
 
 def normalEqn(X, y):
     """
@@ -62,37 +63,37 @@ print('Predicted price of a 1650 sq-ft, 3 br house (using normal equations): ${:
 
 alpha = 0.3
 theta = np.zeros(3)
-theta, J_history = gd.gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
 plt.plot(np.linspace(0, 1500, 1500), J_history[0::1], '-', color = 'black')
 print('Theta found by gradient descent: {:.4f}, {:.4f}, {:.4f}'.format(*theta))
 
 alpha = 0.1
 theta = np.zeros(3)
-theta, J_history = gd.gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
 plt.plot(np.linspace(0, 1500, 1500), J_history[0::1], '-', color = 'purple')
 print('Theta found by gradient descent: {:.4f}, {:.4f}, {:.4f}'.format(*theta))
 
 alpha = 0.03
 theta = np.zeros(3)
-theta, J_history = gd.gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
 plt.plot(np.linspace(0, 1500, 1500), J_history[0::1], '-', color = 'yellow')
 print('Theta found by gradient descent: {:.4f}, {:.4f}, {:.4f}'.format(*theta))
 
 alpha = 0.01
 theta = np.zeros(3)
-theta, J_history = gd.gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
 plt.plot(np.linspace(0, 1500, 1500), J_history[0::1], '-', color = 'green')
 print('Theta found by gradient descent: {:.4f}, {:.4f}, {:.4f}'.format(*theta))
 
 alpha = 0.003
 theta = np.zeros(3)
-theta, J_history = gd.gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
 plt.plot(np.linspace(0, 1500, 1500), J_history[0::1], '-', color = 'red')
 print('Theta found by gradient descent: {:.4f}, {:.4f}, {:.4f}'.format(*theta))
 
 alpha = 0.001
 theta = np.zeros(3)
-theta, J_history = gd.gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
 plt.plot(np.linspace(0, 1500, 1500), J_history[0::1], '-', color = 'blue')
 print('Theta found by gradient descent: {:.4f}, {:.4f}, {:.4f}'.format(*theta))
 plt.show()

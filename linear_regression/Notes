@@ -3,3 +3,5 @@
 
 2. numpy.mean and numpy.std will calculate the mean and std of the flattened input array but not use axis = 0 as
 default.
+
+3. Regularization should not be applied on theta[0] (i.e. the theta for the 1's prepended to X manually)
