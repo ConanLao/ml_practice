@@ -4,7 +4,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import gradient_descent as gd
-import data_preprocessing as dp
+import utils.data_preprocessing as dp
 from linear_regression import gradient_descent
 
 def normalEqn(X, y):
