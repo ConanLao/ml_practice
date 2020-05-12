@@ -66,3 +66,31 @@ def cost_function(params, Y, R, num_users, num_movies,
 
     grad = np.concatenate([X_grad.ravel(), theta_grad.ravel()])
     return J, grad
+
+
+def normalize_ratings(Y, R):
+    """
+    Preprocess data by subtracting mean rating for every movie (every row).
+    Parameters
+    ----------
+    Y : array_like
+        The user ratings for all movies. A matrix of shape (num_movies x num_users).
+    R : array_like
+        Indicator matrix for movies rated by users. A matrix of shape (num_movies x num_users).
+    Returns
+    -------
+    Y_norm : array_like
+        A matrix of same shape as Y, after mean normalization.
+    Y_mean : array_like
+        A vector of shape (num_movies, ) containing the mean rating for each movie.
+    """
+    m, n = Y.shape
+    Y_mean = np.zeros(m)
+    Y_norm = np.zeros(Y.shape)
+
+    for i in range(m):
+        idx = R[i, :] == 1
+        Y_mean[i] = np.mean(Y[i, idx])
+        Y_norm[i, idx] = Y[i, idx] - Y_mean[i]
+
+    return Y_norm, Y_mean

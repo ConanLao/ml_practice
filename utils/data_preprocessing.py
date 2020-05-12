@@ -27,3 +27,21 @@ def feature_normalize(X, ddof=0):
 
     # mean and std are used in prediction. Use the mean and std of the training set to "normalize" test set.
     return X_norm, mean, std
+
+
+def mean_normalize():
+    """
+    Preprocess data by subtracting the mean of each row.
+    Parameters
+    ----------
+    Y : array_like
+        The user ratings for all movies. A matrix of shape (num_movies x num_users).
+    R : array_like
+        Indicator matrix for movies rated by users. A matrix of shape (num_movies x num_users).
+    Returns
+    -------
+    Ynorm : array_like
+        A matrix of same shape as Y, after mean normalization.
+    Ymean : array_like
+        A vector of shape (num_movies, ) containing the mean rating for each movie.
+    """
